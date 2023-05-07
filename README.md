@@ -7,13 +7,6 @@ Accès administrateur sur la machine virtuelle
 Connaissance de base en ligne de commande Linux
 ---
 Étapes
-- [1. Installation d'Ubuntu Server](#i-Installation d'Ubuntu Server)
-- [2. Configuration de SSH](#i-Configuration de SSH)
-- [3. Installation fail2ban](#i-Installation fail2ban)
-- [4. Installation de Docker](#i-Installation de Docker)
-- [5 Installation de Nginx avec WAF](#i-Installation de Docker)
-- [6. Configuration de la backup](#i-Installation de Docker)
-- [4. Installation de Docker](#i-Installation de Docker)
 ## 1. Installation d'Ubuntu Server
 Télécharger l'image ISO d'Ubuntu Server et créer une nouvelle VM en utilisant cet ISO. Lors de la configuration de la VM, définir la quantité de RAM et d'espace disque appropriée.
 ## 2. Configuration de SSH
@@ -312,3 +305,15 @@ Copiez le contenu suivant dans le fichier :
 }
 ```
 Ce fichier configure Filebrowser
+## 8. Installation de Portainer
+Portainer est une interface graphique pour Docker qui nous permettra de gérer nos conteneurs de manière simplifiée.
+```
+sudo docker volume create portainer_data
+```
+```
+sudo docker run -d --name portainer --restart always -p 8000:8000 -p 9000:9000 --mount type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock --mount type=volume,src=portainer_data,dst=/data portainer/portainer-ce
+```
+pour plus d'information sur portainer voir le lien https://youtu.be/e2jVkcC_KCc .
+En cas de commande *not found* rechercher une installation de cette commande sur votre serveur.
+## Conclusion
+Nous avons ainsi installé Docker, Nginx avec un WAF, Backup, Filebrowser et Portainer sur notre machine virtuelle Ubuntu Server. Vous pouvez maintenant accéder à votre application à travers Nginx et utiliser Filebrowser et Portainer pour gérer vos fichiers et vos conteneurs Docker. Notez que pour une utilisation en production, il est important de configurer correctement chaque outil pour assurer la sécurité et la fiabilité de votre application. Il est également recommandé de mettre en place des sauvegardes régulières pour éviter toute perte de données en cas d'incident. Nous espérons que ce guide vous a été utile pour installer les différents outils sur votre machine virtuelle.
