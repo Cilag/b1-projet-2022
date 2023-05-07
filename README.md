@@ -1,8 +1,8 @@
-Installation d'une VM Ubuntu Server et configuration de SSH, Docker, Nginx avec WAF, Backup et FileBrowser
-Prérequis
+# Installation d'une VM Ubuntu Server et configuration de SSH, Docker, Nginx avec WAF, Backup, FileBrowser et Portainer 
+## Prérequis
 Accès à une machine virtuelle (VM) vierge sur laquelle installer Ubuntu Server
 Connexion internet
-carte réseau local
+ip local
 Accès administrateur sur la machine virtuelle
 Connaissance de base en ligne de commande Linux
 ---
